@@ -1,0 +1,21 @@
+# Data files
+data/
+*.csv
+*.parquet
+*.zip
+
+# Credentials
+*.json
+*.env
+*.key
+
+# dbt / BigQuery / cache
+target/
+dbt_packages/
+logs/
+
+# IDE / OS
+.vscode/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
