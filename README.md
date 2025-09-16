@@ -1,5 +1,5 @@
 # Customer Lifetime Value (CLV) Data Mart
-## Project Overview
+
 This project builds a reusable dbt + BigQuery analytics stack focused on predicting and tracking customer lifetime value. It includes cohort analysis, churn detection, product affinity, and trend insights, all powered by SQL transformations and business-ready marts.
 
 ## Project Overview
