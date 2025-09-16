@@ -65,7 +65,7 @@ This project builds a reusable dbt + BigQuery analytics stack focused on predict
 - Tableau dashboard concept with retention, churn, and profitability KPIs tailored for stakeholders.
 
 ## Repository Structure
-```text
+```bash
 clv_project/
 |-- data/
 |-- instacart_dbt/
