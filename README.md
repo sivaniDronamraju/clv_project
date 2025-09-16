@@ -1,12 +1,18 @@
 # Customer Lifetime Value (CLV) Data Mart
 ## Project Overview
-- Builds a reusable dbt + BigQuery analytics stack focused on predicting and tracking customer lifetime value.
-- Demonstrates cohort analysis, churn modeling, and revenue intelligence skills for recruiters evaluating data strategy impact.
-- Provides developers with reproducible transformations, testable SQL models, and deployment-ready orchestration.
+Builds a reusable dbt + BigQuery analytics stack focused on predicting and tracking customer lifetime value. It includes cohort analysis, churn detection, product affinity, and trend insights, all powered by SQL transformations and business-ready marts.
+
+## Project Overview
+- Tracks and predicts customer lifetime value using transaction data.  
+- Implements retention and churn analysis, revenue trends, and product performance insights.  
+- Provides reproducible transformations with dbt, version control, and documentation.  
+- Publishes ready-to-use marts for reporting and dashboards.  
+
 ## Architecture
-- Staging: lightly cleans raw Instacart sources and standardizes customer, order, and product keys.
-- Intermediate: assembles behavioral metrics (recency, frequency, monetary value, cohorts, affinity features) ready for aggregation.
-- Mart: publishes CLV fact models and KPI lookups for business reporting and self-service exploration.
+- Staging: Cleans raw Instacart sources and standardizes customer, order, and product keys.  
+- Intermediate: Assembles behavioral metrics (recency, frequency, monetary value, cohorts, affinity).  
+- Mart: Publishes CLV fact models and KPI lookups for business reporting and exploration.  
+
 ## Setup Instructions
 1. Install prerequisites and authenticate with Google Cloud (Python 3.10+, dbt-core>=1.5, dbt-bigquery, Google Cloud SDK, BigQuery dataset; export `GOOGLE_APPLICATION_CREDENTIALS` to your service account key).
 2. Create and activate a virtual environment, then install dependencies:
@@ -40,6 +46,7 @@
    dbt docs generate
    ```
 5. Connect Tableau (or preferred BI) to the mart dataset and schedule refreshes.
+
 ## Business Questions Solved
 1. Cohort Analysis & Retention: Calculate monthly retention by cohort with pivoted activity.
 2. Order Recency & Frequency: Measure average days between orders and maximum gap per customer.
@@ -51,10 +58,12 @@
 8. Loyalty Program Impact: Track time to more than ten orders and the subsequent spend uplift.
 9. Product Category Performance: Rank categories by margin and estimate return rates.
 10. Customer Behavioral Shift: Detect over 20% declines in basket size between early and recent orders.
+
 ## Deliverables
 - Production-ready CLV mart tables with dimensional context for downstream analytics.
 - Advanced SQL templates answering the ten business questions for reuse in notebooks or BI.
 - Tableau dashboard concept with retention, churn, and profitability KPIs tailored for stakeholders.
+
 ## Repository Structure
 ```text
 clv_project/
@@ -77,3 +86,4 @@ Intermediate and mart directories are populated as CLV transformations are promo
 - Parameterize cohort windows and churn thresholds for automated scenario testing.
 - Integrate automated data quality monitors (freshness, volume) into dbt tests and docs.
 - Deploy CI/CD pipelines and schedule mart refreshes via dbt Cloud or Cloud Composer.
+
