@@ -1,25 +1,41 @@
+# ------------------------
 # Data files
+# ------------------------
 data/
 *.csv
 *.parquet
 *.zip
 
-# Credentials
+# ------------------------
+# Credentials / Secrets
+# ------------------------
 *.json
 *.env
 *.key
+keys/*.json
 
-# dbt / BigQuery / cache
+# ------------------------
+# dbt / BigQuery / Cache
+# ------------------------
 target/
 dbt_packages/
 logs/
 
-# IDE / OS
+# ------------------------
+# IDE / OS Files
+# ------------------------
 .vscode/
 .ipynb_checkpoints/
 .DS_Store
 Thumbs.db
 
-# venv
+# ------------------------
+# Python Virtual Environments
+# ------------------------
 venv/
 .venv/
+
+# ------------------------
+# Local-only Files
+# ------------------------
+AGENTS.md

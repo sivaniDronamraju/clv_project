@@ -1,0 +1,78 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Cleaned and typed staging model for Instacart orders."
+    columns:
+      - name: order_id
+        description: "Primary key of the order."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "Customer ID (renamed from user_id)."
+        tests:
+          - not_null
+
+      - name: order_number
+        description: "Sequence number of the order for the customer (1 = first order)."
+
+      - name: order_day_of_week
+        description: "Day of the week when the order was placed. 0 = Sunday, 6 = Saturday."
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['0', '1', '2', '3', '4', '5', '6']
+                column_name: CAST(order_day_of_week AS STRING)
+
+      - name: order_hour_of_day
+        description: "Hour of day when the order was placed (0–23)."
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']
+                column_name: CAST(order_hour_of_day AS STRING)
+
+      - name: days_since_prior_order
+        description: "Number of days since the customer's previous order. NULL if it's their first order."
+
+      - name: order_ts
+        description: "Artificial datetime column created using order_number and order_hour_of_day for time-based analysis."
+
+  - name: stg_order_products_prior
+    description: "Staging model for prior order line items — includes whether the product was reordered."
+    columns:
+      - name: order_id
+        description: "Foreign key to the order that this item belongs to."
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "Foreign key to the product that was added to the order."
+        tests:
+          - not_null
+
+      - name: add_to_cart_order
+        description: "Sequence in which the product was added to the cart."
+
+      - name: was_reordered
+        description: "Boolean flag: TRUE if this product was previously ordered by the customer."
+  - name: stg_order_products_train
+    description: "Staging model for train order line items — includes whether the product was reordered."
+    columns:
+      - name: order_id
+        description: "Foreign key to the order that this item belongs to."
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "Foreign key to the product that was added to the order."
+        tests:
+          - not_null
+
+      - name: add_to_cart_order
+        description: "Sequence in which the product was added to the cart."
+
+      - name: was_reordered
+        description: "Boolean flag: TRUE if this product was previously ordered by the customer."

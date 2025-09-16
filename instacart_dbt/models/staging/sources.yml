@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: instacart_raw
+    database: "{{ target.project }}"
+    schema: instacart_raw
+    description: "Raw Instacart tables loaded from GCS"
+    tables:
+      - name: aisles
+      - name: departments
+      - name: products
+      - name: orders
+      - name: order_products_prior
+      - name: order_products_train
+      
